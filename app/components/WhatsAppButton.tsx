@@ -1,0 +1,2 @@
+import {whatsappUrl} from "./constants";import {WhatsAppIcon} from "./Icons";
+export default function WhatsAppButton(){return <a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="fixed bottom-5 right-5 z-[100] flex items-center gap-3 rounded-full bg-[#25D366] p-3.5 text-white shadow-[0_14px_40px_rgba(37,211,102,.38)] transition hover:-translate-y-1 sm:px-5"><span className="[&>svg]:h-7 [&>svg]:w-7"><WhatsAppIcon/></span><span className="hidden text-sm font-black sm:block">WhatsApp</span></a>}

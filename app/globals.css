@@ -1,55 +1,13 @@
 @import "tailwindcss";
-
-:root {
-  --background: #f8fbfc;
-  --foreground: #173042;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-::selection {
-  background: #bdeee3;
-  color: #123b48;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #eef6f6;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #90cfc5;
-  border-radius: 999px;
-  border: 2px solid #eef6f6;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #5fb6ab;
-}
+:root{--background:#f8fbfc;--foreground:#173042}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--background);color:var(--foreground);overflow-x:hidden}a{color:inherit;text-decoration:none}button,a{-webkit-tap-highlight-color:transparent}::selection{background:#bdeee3;color:#123b48}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#eef6f6}::-webkit-scrollbar-thumb{background:#90cfc5;border-radius:999px;border:2px solid #eef6f6}
+.page-shell{min-height:100vh;overflow:hidden;padding-top:5rem;background:#f8fbfc;color:#173042}.subhero{position:relative;overflow:hidden;padding:7rem 0 6rem;background:radial-gradient(circle at 15% 20%,rgba(197,243,231,.8),transparent 34%),radial-gradient(circle at 90% 10%,rgba(203,237,249,.9),transparent 36%),linear-gradient(180deg,#f8fbfc,#eef7f7)}.subhero-grid,.soft-grid{position:absolute;inset:0;opacity:.32;pointer-events:none;background-image:linear-gradient(rgba(17,63,76,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(17,63,76,.08) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent)}
+.hero-noise:after{content:"";position:absolute;inset:0;opacity:.12;pointer-events:none;background-image:radial-gradient(rgba(16,76,85,.2) .7px,transparent .7px);background-size:10px 10px}.orb{position:absolute;border-radius:999px;filter:blur(70px);animation:orbFloat 8s ease-in-out infinite alternate}.orb-one{left:-10rem;top:7rem;height:28rem;width:28rem;background:rgba(190,242,228,.72)}.orb-two{right:-10rem;top:2rem;height:34rem;width:34rem;background:rgba(194,234,248,.72);animation-delay:-3s}.floating-card{animation:floatCard 6s ease-in-out infinite}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}.reveal-visible{opacity:1;transform:translateY(0)}.mobile-menu{max-height:0;overflow:hidden;opacity:0;transform:translateY(-10px);transition:max-height .35s ease,opacity .25s ease,transform .25s ease}.mobile-menu-open{max-height:520px;opacity:1;transform:translateY(0)}
+.eyebrow{font-size:.82rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:#078b87}.page-title{margin-top:1rem;max-width:960px;font-size:clamp(2.9rem,7vw,5.8rem);font-weight:900;line-height:1.02;letter-spacing:-.055em;color:#143b49}.page-intro{margin-top:1.6rem;max-width:760px;font-size:1.15rem;line-height:1.85;color:#647f88}.section-title{margin-top:1rem;font-size:clamp(2.25rem,5vw,3.5rem);font-weight:900;line-height:1.08;letter-spacing:-.04em;color:#143b49}.section-copy{margin-top:1.5rem;font-size:1.08rem;line-height:1.85;color:#687f88}
+.primary-button,.secondary-button{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border-radius:999px;padding:1rem 1.75rem;font-weight:800;transition:.25s}.primary-button{background:#0a8588;color:white;box-shadow:0 16px 36px rgba(10,133,136,.2)}.secondary-button{border:1px solid #c9dcdf;background:white;color:#315361}.primary-button:hover,.secondary-button:hover{transform:translateY(-4px)}
+.portal-link{position:relative;display:block;min-height:250px;overflow:hidden;border:1px solid #dce9ea;border-radius:30px;background:radial-gradient(circle at 90% 10%,rgba(181,234,220,.55),transparent 38%),white;padding:1.65rem;transition:.35s}.portal-link:hover{transform:translateY(-8px);border-color:#a6d7d0;box-shadow:0 24px 60px rgba(20,72,80,.12)}
+.contact-icon{display:flex;height:2.75rem;width:2.75rem;align-items:center;justify-content:center;border-radius:.8rem;background:rgba(255,255,255,.1);color:#7bddca;transition:.2s}.contact-icon:hover{transform:translateY(-2px);background:rgba(255,255,255,.18)}.contact-icon.whatsapp{background:#25d366;color:white}.image-frame{overflow:hidden;border:1px solid #dceced;border-radius:40px;background:white;padding:.75rem;box-shadow:0 25px 70px rgba(20,72,80,.13)}
+.value-panel{min-height:290px;border:1px solid rgba(255,255,255,.1);border-radius:30px;background:rgba(255,255,255,.07);padding:2rem;backdrop-filter:blur(10px);transition:.35s}.value-panel:hover{transform:translateY(-8px);background:rgba(255,255,255,.11)}.editorial-row{display:grid;gap:2rem;border-bottom:1px solid #dfeaec;padding:1.5rem 0 2rem}.spotlight-product{border:1px solid #dcebec;border-radius:32px;background:#f8fbfc;padding:1rem;transition:.35s}.spotlight-product:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(20,100,103,.14)}.process-step{position:relative;min-height:240px;text-align:center;display:flex;flex-direction:column;align-items:center}.sector-pill{border:1px solid #dce9ea;border-radius:999px;background:white;padding:.9rem 1.25rem;font-weight:800;color:#365965;box-shadow:0 10px 28px rgba(20,72,80,.06);transition:.25s}.sector-pill:hover{transform:translateY(-4px);border-color:#8fcbc2;color:#0a8588}
+@media(min-width:1024px){.editorial-row{grid-template-columns:1.08fr .92fr;align-items:stretch;padding:2rem 0 3rem}.editorial-row-reverse>:first-child{order:2}.editorial-row-reverse{grid-template-columns:.92fr 1.08fr}}
+@keyframes floatCard{0%,100%{transform:translateY(0) rotate(-.3deg)}50%{transform:translateY(-10px) rotate(.3deg)}}@keyframes orbFloat{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(28px,18px,0) scale(1.08)}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
