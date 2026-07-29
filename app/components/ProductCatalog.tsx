@@ -25,6 +25,7 @@ export default function ProductCatalog() {
   const [activeCategoryId, setActiveCategoryId] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState<ProductRow | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -97,6 +98,26 @@ export default function ProductCatalog() {
       void supabase.removeChannel(channel);
     };
   }, []);
+
+  useEffect(() => {
+    if (!selectedProduct) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setSelectedProduct(null);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedProduct]);
 
   const productCounts = useMemo(() => {
     return products.reduce<Record<string, number>>((counts, product) => {
@@ -246,12 +267,23 @@ export default function ProductCatalog() {
                             >
                               <div className="flex h-44 items-center justify-center overflow-hidden bg-white p-4">
                                 {product.image_url ? (
-                                  <img
-                                    src={product.image_url}
-                                    alt={product.name}
-                                    loading="lazy"
-                                    className="h-full w-full object-contain"
-                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() => setSelectedProduct(product)}
+                                    aria-label={`${product.name} görselini büyüt`}
+                                    className="group relative flex h-full w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0a8588]/20"
+                                  >
+                                    <img
+                                      src={product.image_url}
+                                      alt={product.name}
+                                      loading="lazy"
+                                      className="h-full w-full object-contain transition duration-300 group-hover:scale-[1.04]"
+                                    />
+
+                                    <span className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-[#123f49]/85 px-3 py-1.5 text-[11px] font-black text-white opacity-0 shadow-lg transition group-hover:opacity-100">
+                                      Büyüt
+                                    </span>
+                                  </button>
                                 ) : (
                                   <div className="flex h-full w-full items-center justify-center rounded-2xl border border-dashed border-[#cfe0e2] bg-[#f4f8f8] px-4 text-center">
                                     <p className="text-sm font-bold leading-6 text-[#84979d]">
@@ -278,6 +310,49 @@ export default function ProductCatalog() {
           )}
         </div>
       </div>
+
+      {selectedProduct?.image_url && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedProduct.name} büyük ürün görseli`}
+          className="fixed inset-0 z-[300] flex items-center justify-center bg-black/80 px-4 pb-4 pt-24 backdrop-blur-sm sm:px-8 sm:pb-8 sm:pt-28"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              setSelectedProduct(null);
+            }
+          }}
+        >
+          <div className="relative flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-[28px] bg-white shadow-[0_30px_120px_rgba(0,0,0,.5)]">
+            <button
+              type="button"
+              onClick={() => setSelectedProduct(null)}
+              aria-label="Büyük görseli kapat"
+              className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/75 text-2xl font-light text-white shadow-lg transition hover:scale-105 hover:bg-black sm:right-5 sm:top-5"
+            >
+              ×
+            </button>
+
+            <div className="flex min-h-0 flex-1 items-center justify-center overflow-auto bg-[#f6f7f7] p-4 sm:p-8">
+              <img
+                src={selectedProduct.image_url}
+                alt={selectedProduct.name}
+                className="max-h-[72vh] max-w-full object-contain"
+              />
+            </div>
+
+            <div className="border-t border-[#dfe9ea] bg-white px-5 py-4 pr-16 sm:px-7 sm:py-5">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#0a8588]">
+                Ürün Görseli
+              </p>
+
+              <h3 className="mt-1 text-lg font-black leading-7 text-[#173f4c] sm:text-2xl">
+                {selectedProduct.name}
+              </h3>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
