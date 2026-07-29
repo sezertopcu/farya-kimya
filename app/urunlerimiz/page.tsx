@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import ProductCatalog from "../components/ProductCatalog";
 import Reveal from "../components/Reveal";
 import { ArrowIcon } from "../components/Icons";
 import { whatsappUrl } from "../components/constants";
@@ -50,25 +51,19 @@ const featuredProducts = [
 export default function ProductsPage() {
   return (
     <main className="page-shell">
-      <section className="subhero">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#eef8f8] to-[#f8fbfc] pb-20 pt-16 sm:pb-24 sm:pt-20">
         <div className="subhero-grid" />
 
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
           <Reveal>
-            <p className="eyebrow">Ürünlerimiz</p>
-
-            <h1 className="page-title">
-              Pall markalı gerçek ürünler, farklı kullanım alanlarına özel
-              çözümler.
+            <h1 className="text-4xl font-black tracking-[-0.04em] text-[#143b49] sm:text-5xl">
+              Ürünlerimiz
             </h1>
-
-            <p className="page-intro">
-              Günlük kullanımdan profesyonel işletmelere, otomotiv bakımından
-              kurumsal taleplere kadar geniş ürün seçenekleri.
-            </p>
           </Reveal>
         </div>
       </section>
+
+      <ProductCatalog />
 
       <section className="bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -126,9 +121,7 @@ export default function ProductsPage() {
             <div className="mx-auto max-w-3xl text-center">
               <p className="eyebrow">Öne Çıkan Ürünler</p>
 
-              <h2 className="section-title">
-                Profesyonel temizlik gücü
-              </h2>
+              <h2 className="section-title">Profesyonel temizlik gücü</h2>
             </div>
           </Reveal>
 
@@ -175,9 +168,7 @@ export default function ProductsPage() {
           <Reveal>
             <div className="grid items-end gap-8 lg:grid-cols-2">
               <div>
-                <p className="eyebrow !text-[#70d5c3]">
-                  Otomotiv Ürünleri
-                </p>
+                <p className="eyebrow !text-[#70d5c3]">Otomotiv Ürünleri</p>
 
                 <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] sm:text-5xl">
                   Aracınız için güçlü bakım çözümleri
@@ -185,8 +176,8 @@ export default function ProductsPage() {
               </div>
 
               <p className="max-w-xl text-lg leading-8 text-white/65 lg:justify-self-end">
-                Yazlık ve kışlık oto cam suyu, AdBlue ve profesyonel oto
-                yıkama köpüğü.
+                Yazlık ve kışlık oto cam suyu, AdBlue ve profesyonel oto yıkama
+                köpüğü.
               </p>
             </div>
           </Reveal>
